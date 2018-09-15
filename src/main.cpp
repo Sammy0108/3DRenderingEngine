@@ -13,7 +13,7 @@ int main(int argc, char** argv)
 		if(!glfwInit())
 		{
 			std::cerr << "GLFW failed to initialize" << std::endl;
-			throw 1;
+			throw GLFW_ERR;
 		}
 
 		int maj, min, rev;

@@ -1,6 +1,6 @@
 #ifndef ERROR_H
 #define ERROR_H
 
-// error codes
+#define GLFW_ERR 1
 
 #endif
