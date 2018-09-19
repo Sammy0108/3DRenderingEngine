@@ -1,16 +1,29 @@
+# compiler/flags
 CC =  g++
-BIN = ./bin
-SRC = ./src
-OBJ = ./obj
-OUT = $(BIN)/engine
-OBJS = $(OBJ)/window.o $(OBJ)/main.o
-SRCS = $(SRC)/window.cpp $(SRC)/main.cpp
-LIBS = -lGL -lGLEW -lglfw
+CFLAGS = -I. -c
+LFLAGS = -lGL -lGLEW -lglfw
+
+# main output file
+BDIR = ./bin
+OUT = $(BDIR)/engine
+
+# compiled objects
+ODIR = ./obj
+OBJ = $(wildcard $(ODIR)/*.o)
+
+# source files
+SDIR = ./src
+SRC = $(wildcard $(SDIR)/*.cpp)
+
+# dependencies
+DEP = $(wildcard $(SDIR)/*.h)
+
+.PHONY: all
 
 all: $(OUT)
 
-$(OUT): $(OBJS)
-	$(CC) $^ $(LIBS) -o $(OUT) 
+$(OUT): $(OBJ)
+	$(CC) $^ $(LFLAGS) -o $@
 
-$(OBJ)/%.o: $(SRC)/%.cpp
-	$(CC) -c $< -o $@
+$(ODIR)/%.o: $(SDIR)/%.cpp $(DEP)
+	$(CC) $(CFLAGS) $< -o $@
