@@ -2,15 +2,15 @@ CC =  g++
 BIN = ./bin
 SRC = ./src
 OBJ = ./obj
-EXE = $(BIN)/test.exe
+OUT = $(BIN)/engine
 OBJS = $(OBJ)/window.o $(OBJ)/main.o
 SRCS = $(SRC)/window.cpp $(SRC)/main.cpp
 LIBS = -lGL -lGLEW -lglfw
 
-all: $(EXE)
+all: $(OUT)
 
-$(EXE): $(OBJS)
-	$(CC) $^ $(LIBS) -o ../$(EXE) 
+$(OUT): $(OBJS)
+	$(CC) $^ $(LIBS) -o $(OUT) 
 
 $(OBJ)/%.o: $(SRC)/%.cpp
-	$(CC) -c $<
+	$(CC) -c $< -o $@
