@@ -7,13 +7,13 @@ LFLAGS = -lGL -lGLEW -lglfw
 BDIR = ./bin
 OUT = $(BDIR)/engine
 
-# compiled objects
-ODIR = ./obj
-OBJ = $(wildcard $(ODIR)/*.o)
-
 # source files
 SDIR = ./src
 SRC = $(wildcard $(SDIR)/*.cpp)
+
+# compiled objects
+ODIR = ./obj
+OBJ = $(patsubst $(SDIR)/%.cpp, $(ODIR)/%.o, $(SRC))
 
 # dependencies
 DEP = $(wildcard $(SDIR)/*.h)
