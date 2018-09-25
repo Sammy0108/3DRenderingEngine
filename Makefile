@@ -3,7 +3,17 @@ CFLAGS = -I. -c
 LFLAGS = -lGL -lGLEW -lglfw
 
 BDIR = ./bin
-OUT = $(BDIR)/engine
+
+ifeq ($(OS), Windows_NT)
+	
+	OUT = $(BDIR)/engine.exe
+	LFLAGS += -lopengl32
+
+else 
+	
+	OUT = $(BDIR)/engine
+
+endif
 
 SDIR = ./src
 SRC = $(wildcard $(SDIR)/*.cpp)
