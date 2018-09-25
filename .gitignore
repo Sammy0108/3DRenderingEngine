@@ -4,3 +4,6 @@
 
 # windows scripts
 *.bat
+
+# other scripts
+*.sh
