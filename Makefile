@@ -5,12 +5,10 @@ LFLAGS = -lGL -lGLEW -lglfw
 BDIR = ./bin
 
 ifeq ($(OS), Windows_NT)
-	
 	OUT = $(BDIR)/engine.exe
 	LFLAGS += -lopengl32
 
 else 
-	
 	OUT = $(BDIR)/engine
 
 endif
