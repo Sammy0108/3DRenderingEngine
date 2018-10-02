@@ -1,5 +1,5 @@
 CC =  g++
-CFLAGS = -I. -c
+CFLAGS = -c
 LFLAGS = -lGL -lGLEW -lglfw
 
 BDIR = ./bin
@@ -21,12 +21,15 @@ OBJ = $(patsubst $(SDIR)/%.cpp, $(ODIR)/%.o, $(SRC))
 
 DEP = $(wildcard $(SDIR)/*.h)
 
-.PHONY: all
+.PHONY: all test
 
-all: $(OUT)
+all: $(OUT) test
 
 $(OUT): $(OBJ)
 	$(CC) $^ $(LFLAGS) -o $@
 
 $(ODIR)/%.o: $(SDIR)/%.cpp $(DEP)
 	$(CC) $(CFLAGS) $< -o $@
+
+test: $(OUT)
+	$(OUT)
