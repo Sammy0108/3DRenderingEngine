@@ -17,7 +17,7 @@ Window::Window(int width, int height, const std::string& title)
 	if(glewInit() != GLEW_OK)
 	{
 		std::cerr << "GLEW failed to initialize" << std::endl;
-		throw 1;
+		throw GLEW_ERR;
 	}
 
 	std::cout << "OpenGL version: " << glGetString(GL_VERSION) << std::endl;
